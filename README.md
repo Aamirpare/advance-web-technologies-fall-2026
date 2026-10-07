@@ -1,6 +1,7 @@
 # CSC337 Advance Web Technologies 
 ## Teacher Information
-|-----------------|-----------------------------------------_----|
+|  Title          |  Descripton
+|-----------------|----------------------------------------------|
 |  Course Name    |  Advanced Web Technologies Credit Hours: 2+1 |
 |  Course Code    |  CSC337                                      |
 |  Pre-requisite  |  CSC336 - Web Technologies                   |
@@ -10,4 +11,4 @@
 |  Semester       |  Fall 2026                                   |
 |  Department     | Computer Science                             | 
 |  Campus         | Islamabad                                    |
-|----------------------------------------------------------------|
+
