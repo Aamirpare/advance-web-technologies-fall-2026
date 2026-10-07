@@ -26,3 +26,29 @@ applications.
 4. Real-World Next.js, Michele Riva. 
 5. MongoDB: The Definitive Guide, Shannon Bradshaw, Eoin Brazil & Kristina Chodorow. 
 6. Official Next.js Documentation (nextjs.org/learn). 
+## Lecture Plan
+| Week # | Lecture # | Topic (Chapter/Topics Covered) | Practice/Evaluation | Remarks |
+|--------|-----------|--------------------------------|---------------------|---------|
+|  1     |   1       | Course Overview and Enterprise Web Application Architecture: | Exercises as given in the book |  Casciaro & Mammino, Chapter 1 |
+                          • Course introduction, CLOs and assessment plan; 
+                          how AWT builds on Web Technologies 
+                          • Web application architectures: monolithic, 
+                          modular monolith, microservices and serverless 
+                          • Layered architecture: presentation, 
+                          application/service, business/domain, data access 
+                          and infrastructure 
+                          • Scalability and reliability fundamentals: scaling, 
+                          stateless applications, load balancing, single 
+                          points of failure
+|        |   2       | Technology Selection and Cross-Cutting Concerns: | 
+                          • Microservices fundamentals: service boundaries, 
+                          benefits, challenges and inter-service 
+                          communication 
+                          • Architecture and technology selection: when to 
+                          choose what.  
+                          • Trade-offs: complexity, cost, performance and 
+                          maintainability 
+                          • Cross-cutting concerns: security, performance 
+                          (latency, throughput, caching), communication 
+                          and deployment 
+                          • Multi-tenancy SaaS Architecture 
