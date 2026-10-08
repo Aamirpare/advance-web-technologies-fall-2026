@@ -1,0 +1,61 @@
+body {
+    font-family: sans-serif;
+    box-sizing: border-box;
+
+    .user-container {
+        width: min(60%, 100%);
+        margin: 0 auto;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-top: 10px;
+
+        thead {
+            th {
+                padding: 10px;
+                background-color: #333;
+                color: #fff;
+            }
+        }
+
+        tbody {
+            td {
+                padding: 8px;
+                border-bottom: 1px solid #333;
+            }
+        }
+    }
+
+    button {
+        display: inline-flex;
+        justify-content: space-between;
+        align-items: center;
+        border: none;
+        cursor: pointer;
+        border-radius: 4px;
+        padding: 5px 10px;
+
+        svg {
+            fill: #fff;
+            width: 20px;
+            height: 20px;
+        }
+
+        span {
+            display: inline-block;
+            margin-left: 5px;
+        }
+    }
+
+    button.primary {
+        background-color: #009;
+        color: #fff;
+    }
+
+    button.danger {
+        background-color: #900;
+        color: #fff;
+    }
+}
