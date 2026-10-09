@@ -1,410 +1,155 @@
-# CSC337 Advance Web Technologies 
-## Teacher Information
-|  Title          |  Descripton
-|-----------------|----------------------------------------------|
-|  Course Name    |  Advanced Web Technologies Credit Hours: 2+1 |
-|  Course Code    |  CSC337                                      |
-|  Pre-requisite  |  CSC336 - Web Technologies                   |
-|  Teacher Name   |  Aamir Pare                                  |
-|  Teacher E-mail |  aamir_shabbir@comsats.edu.pk                |
-|  Program        |  BSCS,BSSE, BSAI                             |
-|  Semester       |  Fall 2026                                   |
-|  Department     | Computer Science                             | 
-|  Campus         | Islamabad                                    |
-## Course Contents
-This course provides hands-on learning of current web technologies and production-grade full-stack 
-engineering. Students cover enterprise architecture, REST APIs, security, authentication, OAuth 2.0, 
-OWASP Top 10, and communication approaches including REST, GraphQL, JSON-RPC, and 
-WebSockets. The course emphasizes modern frontend development with Next.js, including routing, 
-rendering, server-side capabilities, performance, caching, scalability, database optimization, testing, 
-and production deployment. Students learn to design, build, secure, optimize, and deploy modern web 
-applications. 
-## Recommended Books
-1. Web Development with Node and Express, Ethan Brown, O’Reilly. 
-2. Node.js Design Patterns, Mario Casciaro & Luciano Mammino. 
-3. Designing Data-Intensive Applications, Martin Kleppmann. 
-4. Real-World Next.js, Michele Riva. 
-5. MongoDB: The Definitive Guide, Shannon Bradshaw, Eoin Brazil & Kristina Chodorow. 
-6. Official Next.js Documentation (nextjs.org/learn). 
-## Lecture Plan
-
-### Lecture 1
-**Course Overview and Enterprise Web Application Architecture:**
-
-- Course introduction, CLOs and assessment plan; how AWT builds on Web Technologies
-- Web application architectures: monolithic, modular monolith, microservices and serverless
-- Layered architecture: presentation, application/service, business/domain, data access and infrastructure
-- Scalability and reliability fundamentals: scaling, stateless applications, load balancing, single points of failure
-
-       Exercises as given in the books,
-       Casciaro & Mammino, Chapter No. 1
-
-### Lecture 2
-**Technology Selection and Cross-Cutting Concerns:**
-
-- Microservices fundamentals: service boundaries, benefits, challenges and inter-service communication
-- Architecture and technology selection: when to choose what.
-- Trade-offs: complexity, cost, performance and maintainability
-- Cross-cutting concerns: security, performance (latency, throughput, caching), communication and deployment
-- Multi-tenancy SaaS Architecture
-  
-       Exercises as given in the books,
-       Casciaro & Mammino, Chapter No. 1
-     
-### Lecture 3
-**Full-Stack Application Architecture - Business,** **Infrastructure and Application Layers**
-
-- What is software architecture; the layers of a fullstack application: presentation, business, infrastructure, application and data
-- Business layer: domain understanding, requirements, business rules, use cases, user stories; functional vs. non-functional requirements
-- Infrastructure layer: servers, VMs, containers, orchestration, cloud service models (IaaS/PaaS/SaaS), load balancing and CDN
-- Application layer: API gateway, service layer, cross-cutting concerns, stateful vs. stateless design, fault tolerance and graceful degradation
-
-Exercises as given in the books + Assignment 1
-
-Kleppman n, Chapter No. 1 & 2
+# CSC337 Advance Web Technologies
 
-### Lecture 4
-**Data Layer and Microservices Architecture:**
+## Lecture Overview
 
-- Data layer design: data modelling, SQL vs. NoSQL, polyglot persistence, **Quiz # 1** Kleppman n, Chapter
+- Topic: Express.js Fundamentals — Routing, Middleware, and Handling HTTP Requests
 
-replication/partitioning, indexing and the CAP theorem
+- Duration: 60 Minutes
 
-- Monolithic vs. modular-monolith vs. microservices vs. serverless architectures selection
-- Microservices principles: service decomposition, bounded contexts and service boundaries
-- Inter-service communication: REST, gRPC, message queues; service discovery, API gateway, database-per-service
-- Benefits, challenges and anti-patterns of microservices; when a monolith is the better choice; architecture/technology selection tradeoffs
+- Target Audience: Undergraduate Computer Science Students (Prerequisite: Basic Node.js and JavaScript ES6)
 
-### Lecture 5
-**Professional API Design Practices:**
+- Learning Objectives:
 
-- REST architectural constraints: client-server, statelessness, cacheability, layered system, uniform interface
-- Resource modelling and URI naming conventions; nouns vs. verbs, nesting of resources; HTTP methods, idempotency and safe methods
-- Status codes and consistent error responses; pagination, filtering, sorting and partial responses
-- API versioning strategies and HATEOAS; API documentation with OpenAPI/Swagger and API- Gateway basics
-- Breaking vs. non-breaking changes
-- Deprecation policy, sunset headers and consumerdriven contracts
+       1. Understand Express.js core architecture and server setup.
 
-Exercises as given in the books
+       2. Master built-in middleware for static serving and body parsing.
 
-Ethan Brown Chapter No 15 -18
+       3. Implement GET and POST routes to handle JSON and HTML files.
 
-### Lecture 6
-**REST and GraphQL**
+       4. Identify limitations of in-memory data structures in production APIs.
 
-- REST recap: resource-oriented request/response; over-fetching and under-fetching
-- GraphQL schema, types and the Schema Definition Language
-- Queries, mutations, subscriptions and resolvers
-- When GraphQL makes sense; caching and querycomplexity concerns
+### Introduction & Code Overview
 
-Exercises as given in the books
+**Instructor Script**
 
-GraphQL official document ation
+```
+"Welcome everyone. Today, we are taking a major step beyond raw Node.js by diving into Express.js, the standard web framework for Node.
 
-### Lecture 7
-**JSON-RPC and WebSockets**
+Imagine building a REST API using Node’s native http module: you would have to manually parse URLs, extract payload chunks from streams, write header routing logic, and write custom static file streamers. Express abstracts all that boilerplate into clean, readable code.
 
-- JSON-RPC: procedure-oriented communication, message format, batching and notifications
-- WebSocket protocol and handshake; persistent bidirectional communication
-- Real-time communication with Socket.IO: server/client setup, events, rooms, namespaces, broadcasting; scaling with the Redis adapter
-- Comparison with Server-Sent Events and long
+Take a look at the target code on the board. In around 30 lines, this script builds a complete Web Server and REST API that serves an HTML frontend, fetches user records, and adds new users. Let's break it down section by section."
+```
 
-Exercises as given in the books
+- Express.js core benefits: Simplifies routing, body parsing, static file delivery, and middleware management.
 
-JSON- RPC 2.0 specificati on; Socket.IO document ation polling; real-time use cases (chat, notifications, dashboards)
+- High-level flow of our application:
+  $$\text{Client Request} \longrightarrow \text{Middleware Pipeline} \longrightarrow \text{Route Handler} \longrightarrow \text{Response}$$
 
-### Lecture 8
-**Selecting a Suitable Communication Approach**
+## Module Imports, Initialization, and Middleware Pipeline
 
-- Requirement-driven technology-selection criteria
-- CRUD/resource API → REST; flexible client queries → GraphQL
-- Procedure-oriented API → JSON-RPC; real-time bidirectional → WebSockets
-- Non-functional factors (caching, tooling, security, expertise); decision exercise on a case study
+```
+  const express = require("express");
+  const users = require("./users.js");
 
-Exercises as given in the books
+  const app = express();
 
-Kleppman n, Chapter No. 4
+  app.use(express.json());
+  app.use(express.urlencoded({ extended: true }));
+  app.use(express.static("public"));
+```
 
-### Lecture 9
-**Application Security: Authentication and** **Authorization**
+**Key Concepts & Instructor Discussion**
 
-- Authentication vs. authorization; stateful sessions vs. stateless tokens
-- Session-based authentication and server-side session stores
-- Token-based authentication and JWT: structure, signing, expiry and refresh tokens; secure token storage (httpOnly cookies vs. localStorage)
-- Role-Based Access Control (RBAC); overview of access-control models (DAC, MAC, RBAC, ABAC)
-- Password hashing (bcrypt) and salting, password policies, multi-factor authentication overview
+1.  Initialization (const app = express()):
+    - Calling express() creates an application instance containing all routing and middleware functionality.
 
-Exercises as given in the books
+2.  What is Middleware? (app.use()):
+    - Middleware functions execute sequentially during the request-response cycle. They have access to the Request object (req), Response object (res), and the next function in the application’s request-response cycle.
 
-Ethan Brown Chapter No 13
+3.  Parsing Payload Data:
+    - express.json(): Parses incoming HTTP requests with JSON payloads. It populates req.body with a parsed JavaScript object.
 
-### Lecture 10
-**OAuth 2.0 and OpenID Connect**
+    - express.urlencoded({ extended: true }): Parses URL-encoded data from standard HTML <form> submissions. Setting extended: true uses the qs library, which allows for rich objects and arrays to be encoded into the URL-encoded format.
 
-- OAuth 2.0 as an authorization framework: roles and terminology
-- Authorization Code flow with PKCE; overview of other grant types
-- Access tokens, refresh tokens, scopes and user consent
-- OpenID Connect and the ID token; social login and third-party identity providers
-- Passport.js strategies; common OAuth mistakes and secure implementation
+4.  Serving Static Assets (express.static("public")):
+    - Serves static assets like CSS, client-side JS, images, or static HTML directly from the /public directory without requiring individual route definitions.
 
-Exercises as given in the books
+## Routing Mechanics: GET & POST Handlers
 
-OAuth 2.0 / OIDC specificati ons
+```
+app.get("/", (req, res) => {
+    res.sendFile("index.html", { root: __dirname }, err => {
+        if (err) throw new Error("Error while reading file");
+    })
+});
 
-### Lecture 11
-**Web-Specific Security**
+app.get("/users", (req, res) => {
+    res.json(users);
+});
 
-- Cross-Site Scripting (stored, reflected, DOMbased) and output encoding
-- Cross-Site Request Forgery, anti-CSRF tokens and SameSite cookies
-- CORS: preflight requests, headers and safe configuration
+app.post("/users", (req, res) => {
+    const user = { id: users.length + 1, ...req.body };
+    users.push(user);
+    res.json({ redirect: true, message: "User saved successfully." });
+    //res.redirect("/");
+});
+```
 
-Exercises as given in the books
+**Key Concepts & Instructor Discussion**
 
-OWASP Cheat Sheet Series
+1. Serving HTML Files (app.get("/")):
+   - res.sendFile() streams a file directly to the client.
 
-- SQL/NoSQL injection and sanitization; HTTPS/TLS, secure cookies and Content Security Policy
+   - Why { root: **dirname }? res.sendFile requires an absolute file path. Node's global variable **dirname guarantees the path resolves accurately regardless of where the script is executed.
 
-### Lecture 12
-**API Security**
+   - Error Callback: Passes an optional error parameter to intercept missing file issues or read permission errors.
 
-- Input validation and schema-based request validation (express-validator / Joi)
-- Rate limiting, throttling and quotas; HPP, mongosanitize, xss-clean
-- API keys vs. tokens and mutual TLS; secrets management and key rotation
-- Authorization at the API and resource level; object-level access checks
+2. Building a Read Endpoint (app.get("/users")):
+   - res.json() serializes JavaScript objects or arrays into JSON format and automatically sets the header Content-Type: application/json.
 
-Exercises as given in the books + Assignment No 2
+3. Handling Create Operations (app.post("/users")):
+   - Spread Operator (...req.body): Combines object properties dynamically.
 
-OWASP API Security Top 10
+   - ID Generation Strategy: id: users.length + 1 creates an incrementing ID. (Point out to students: This strategy breaks if items are deleted from an array!)
 
-### Lecture 13
-**OWASP Top 10**
+   - Redirect vs JSON Response: Note the commented-out res.redirect("/"). Returning JSON lets client-side JS frameworks handle redirection, offering greater flexibility than direct HTTP 302 redirects.
 
-- Purpose, structure and correct use of the OWASP Top 10
-- Broken access control, cryptographic failures and injection
-- Insecure design, security misconfiguration and vulnerable/outdated components
-- Authentication and integrity failures, logging/monitoring failures, SSRF; practical hardening checklist (Helmet, disabling xpowered-by)
+## App Listener & Code Review / Bug Hunt
 
-Exercises as given in the books
+```
+  app.listen(4000, () => {
+      console.log("Server is listening at http://localhost:4000");
+  });
+```
 
-OWASP Top 10 (2021)
+**Interactive Bug Hunt & Code Analysis**
+All the students must review the provided code snippet and identify potential real-world runtime bugs or design issues.
 
-### Lecture 14
-**Frontend Performance**
+1. Unhandled Uncaught Exception in res.sendFile:
 
-- Core Web Vitals (LCP, CLS, INP) and measurement with Lighthouse
-- HTTP and browser caching of static assets
-- Asset optimisation: images, fonts, compression and minification
-- Lazy loading, code splitting and bundle analysis
+   ```
+          if (err) throw new Error("Error while reading file");
+   ```
 
-**Quiz # 2** web.dev performance guides
+   - Issue: Throwing an asynchronous error inside an async callback without passing it to Express's next(err) handler can trigger an uncaught exception, which can crash the entire Node process.
 
-### Lecture 15
-**Web / Server Caching**
+   - Fix: Use if (err) return next(err); instead of throw new Error(...).
 
-- Cache-Control, ETag, Last-Modified and cache validation
-- Private browser cache vs. shared caches
-- CDN and edge caching; reverse-proxy caching with Nginx/Varnish
-- Cache keys, invalidation and purging strategies
+1. In-Memory Data Persistence:
+   - Issue: Storing data in users.push(user) means all newly registered users are lost whenever the server restarts or crashes.
 
-Exercises as given in the books
+   - Production Solution: Connect to a persistent database like MongoDB or PostgreSQL.
 
-Kleppman n, Chapter No. 1
-### Lecture 16
-**Application Caching with Redis**
+1. Concurrency & Race Conditions in ID Generation:
+   - Issue: users.length + 1 generates duplicate IDs if multiple asynchronous requests come in simultaneously or if array elements are removed.
 
-- Introduction to Redis: in-memory data store and data structures (strings, hashes, lists, sets, sorted sets)
-- Cache-aside, read-through and writethrough/write-behind patterns
-- Cache invalidation, TTL, eviction policies and stampede protection
-- Using Redis for API caching, session storage, rate limiting and leaderboards
+## Summary & Homework Assignment
 
-Exercises as given in the books
+- Middleware sits between incoming requests and outgoing responses.
 
-Redis document ation
+- Express provides helper methods like res.json() and res.sendFile() that streamline HTTP handling.
 
-### Lecture 17
+- Always handle asynchronous file system errors safely using Express error handling, and rely on real database identifiers in production apps.
 
-Midterm Examination
+**Assignment/Lab Exercise**
 
-**Midterm** **(25%)**
+1. Refactor Error Handling: Update the app.get("/") handler to pass the error to an Express central error handler (next(err)).
 
-### Lecture 18
-**Database Monitoring, Optimization and Serverless** **Scalability**
+2. Implement Input Validation: Add a check inside app.post("/users") to verify that req.body.name and req.body.email exist. If missing, return an HTTP status 400 Bad Request.
 
-- Indexing strategies and reading query plans (EXPLAIN / ANALYZE)
-- Query optimisation, the N+1 problem, connection pooling and slow-query monitoring
-- Serverless functions: execution model, cold starts, statelessness and limits
-- Horizontal vs. vertical scaling, load balancing and bottleneck identification
+3. Add DELETE & PUT Routes: Write two additional endpoints:
+   - DELETE /users/:id to remove a user by ID.
 
-Exercises as given in the books
+   - PUT /users/:id to update an existing user's details.
 
-Kleppman n, Chapter No. 3-6
-
-### Lecture 19
-**Event-Driven Scalability with Kafka and Multi-** **Tenancy SaaS Products**
-
-- Event-driven architecture: events, commands, producers and consumers; Kafka concepts (topics, partitions, offsets, brokers, replication)
-- Delivery semantics (at-most-once / at-least-once / exactly-once), ordering and retention; integrating Kafka with Node.js (KafkaJS)
-- Software as a Service: single-tenant vs. multitenant architectures and business model overview
-- Tenancy models (shared DB with tenant ID, schema-per-tenant, DB-per-tenant), tenant routing, data isolation, subscription/billing basics
-
-Exercises as given in the books + Assignment No 3
-
-Kleppman n, Chapter No. 11 ; Redis / Kafka document ation
-
-### Lecture 20
-**Next.js Architecture and Project Setup**
-
-- Recap of React fundamentals: components, props, state and hooks; limitations of client-side-only React
-- Next.js features: hybrid rendering, file-system routing, built-in optimization and full-stack capability
-- Rendering strategies overview: CSR, SSR, SSG
-
-**Quiz # 3**
-
-Riva, Chapter No. 1-2 and ISR - concepts and trade-offs
-
-- Project setup (create-next-app), folder structure, configuration files; App Router vs. Pages Router
-
-### Lecture 21
-**Routing and Layout Management**
-
-- File-based routing conventions and special files (page, layout, loading, error, not-found)
-- Nested routes, route groups, dynamic, catch-all and optional catch-all segments
-- Layouts, templates and shared UI
-- Navigation: Link component, useRouter/usePathname, programmatic navigation, redirects and rewrites
-
-Exercises as given in the books
-
-Riva, Chapter No. 3
-
-### Lecture 22
-**Rendering Strategies and Server-Side Capabilities**
-
-- Server Components vs. Client Components; the “use client” directive and composition rules
-- Server-side data fetching, request memoization, caching and revalidation (time-based and ondemand ISR)
-- Streaming and Suspense; loading skeletons and progressive rendering
-- Route handlers / API routes, Server Actions and Next.js middleware
-
-Exercises as given in the books
-
-Riva, Chapter No. 4
-
-### Lecture 23
-**Components, Layouts and Styling**
-
-- Special-file behaviour; Metadata API for titles, descriptions and SEO; built-in optimizations (next/image, next/font, next/script)
-- Styling options: global CSS, CSS Modules, Tailwind CSS and CSS-in-JS
-- Component libraries (shadcn/ui, MUI) and design systems; responsive design, dark mode and accessibility
-- Building the application shell: navigation, sidebar, forms and reusable UI components
-
-Exercises as given in the books
-
-Riva, Chapter No. 6 & 7
-
-### Lecture 24
-**Frontend Architecture**
-
-- Component organisation and folder conventions at scale
-- State categories: local UI state, server state and URL state
-- API/service layer and data-access abstraction; form handling and schema validation
-- Error boundaries, loading skeletons and code splitting
-
-Exercises as given in the books
-
-Riva, Chapter No. 6 & 7
-
-### Lecture 25
-**Data Fetching and State Management with** **TanStack Query:**
-
-- Client-side data fetching with SWR / TanStack Exercises TanStack
-
-Query: caching, staleness, mutations and optimistic updates
-
-- Query keys, pagination, infinite queries, prefetching, retries and error handling
-- State-management options in Next.js (Context, Zustand, Redux Toolkit) and when to use each
-- Handling errors, empty states and performance pitfalls in data fetching
-
-as given in the books + Assignment No 4
-
-Query document ation
-
-### Lecture 26
-**Authentication and Security in Next.js**
-
-- Authentication approaches in Next.js: sessionbased, JWT and third-party providers
-- NextAuth.js / Auth.js: setup, providers, callbacks, sessions and adapters
-- Protecting pages, layouts, route handlers and server actions; middleware-based route protection and role-based UI rendering
-- Secure handling of environment variables (serveronly secrets vs. public variables); XSS, CSRF, CORS and secure headers
-
-**Quiz # 4** Riva, Chapter No. 4
-
-### Lecture 27
-**Performance Optimization and Testing in Next.js**
-
-- Performance metrics and Core Web Vitals (LCP, CLS, INP)
-- Code splitting, dynamic imports, lazy loading and bundle analysis; image/font/asset optimization
-- SEO in Next.js: metadata, sitemap, robots.txt, structured data and Open Graph
-- Testing the application: unit, component and endto-end testing (Jest, React Testing Library, Playwright/Cypress)
-
-Exercises as given in the books
-
-Riva, Chapter No. 9
-
-### Lecture 28
-**Deploying the Product on Vercel**
-
-- Build process, production build output and selfhosting vs. managed hosting
-- Introduction to Vercel: projects, Git integration, preview and production deployments
-- Configuring environment variables, secrets and build settings on Vercel
-- Serverless and edge functions/middleware; custom domains, HTTPS, CDN/caching behaviour, analytics and CI/CD rollbacks
-
-Exercises as given in the books
-
-Next.js document ation
-
-### Lecture 29
-**Web Application and API Testing**
-
-- Testing pyramid: unit, integration and end-to-end tests
-- Unit and integration testing tools (Jest/Vitest,
-
-Exercises as given in the books
-
-Ethan Brown Chapter
-
-React Testing Library, Supertest)
-
-- API testing: success paths, validation errors, authentication and edge cases; Postman collections and Swagger UI
-- End-to-end testing (Playwright/Cypress) with mocking; coverage and CI integration
-
-No 5
-
-### Lecture 30
-**Reliability and Observability: Log Levels**
-
-- Reliability practices: retries, circuit breakers, health checks and graceful degradation; CI/CD pipeline and deployment strategies (build, test, deploy, rollback)
-- Why logging matters: logs vs. metrics vs. traces
-- Log levels: TRACE, DEBUG, INFO, WARN, ERROR and FATAL; structured logging with correlation/request identifiers
-- Log aggregation, retention and handling of sensitive data; deciding what to log (signal vs. noise)
-
-Exercises as given in the books
-
-Kleppman n, Chapter No. 13
-
-### Lecture 31
-**Application and Server Monitoring; Course Review**
-
-- Key metrics: latency, error rate, throughput and saturation; health checks, uptime monitoring and alerting
-- Application performance monitoring (APM) and distributed-tracing basics
-- Server monitoring (CPU, memory, disk, network); dashboards, SLIs/SLOs and incident response
-- Consolidated review of Units 1-7; semesterproject demonstration and final-exam guidelines
-
-Exercises as given in the books
-
-Kleppman n, Chapter No. 12
-
-### Lecture 32
-- Review
-
-**Final** **(50%)**
-
-**Note:** All Assignments/Quizes weightage is 25%
+**Good Bye**
