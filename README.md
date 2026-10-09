@@ -1,5 +1,7 @@
 # CSC337 Advance Web Technologies 
-<img src="./profile/profile.jpg" alt="Profile Image" width="300" height="200">
+
+<img src="./profile/profile.jpg" alt="Profile Image" width="100" height="100">
+
 ## Teacher Information
 |  Title          |  Descripton
 |-----------------|----------------------------------------------|
