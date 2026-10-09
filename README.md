@@ -1,4 +1,5 @@
 # CSC337 Advance Web Technologies 
+<img src="https://example.com/image.png" alt="Example Image" width="300" height="200">
 ## Teacher Information
 |  Title          |  Descripton
 |-----------------|----------------------------------------------|
