@@ -6,7 +6,7 @@
 |  Course Code    |  CSC337                                      |
 |  Pre-requisite  |  CSC336 - Web Technologies                   |
 |  Teacher Name   |  Aamir Pare                                  |   
-|                 | <img src="./profile/profile.jpg" alt="Profile Image" width="100" height="100" style="border-radius: 15px;"> |
+|                 | <img src="./profile/profile.jpg" alt="Profile Image" width="100" height="100"> |
 |  Teacher E-mail |  aamir_shabbir@comsats.edu.pk                |
 |  Program        |  BSCS,BSSE, BSAI                             |
 |  Semester       |  Fall 2026                                   |
